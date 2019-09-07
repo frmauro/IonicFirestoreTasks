@@ -21,7 +21,9 @@ export class LoginPage implements OnInit {
 
   private nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(private authService: AuthService, private fb: FormBuilder) {
+    console.log('start app');
+  }
 
   ngOnInit(): void {
     this.createForm();
@@ -57,6 +59,8 @@ export class LoginPage implements OnInit {
   }
 
   async onSubmit(provider: AuthProvider): Promise<void> {
+    let teste = 'teste';
+
     try {
       const credentials = await this.authService.authenticate({
         isSignIn: this.configs.isSignIn,

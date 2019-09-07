@@ -9,7 +9,7 @@
 
   <form
     [formGroup]="authForm"
-    (onsubmit)="onSubmit(authProviders.Email)"
+    (submit)="onSubmit(authProviders.Email)"
   >
 
     <ng-container *ngIf="!configs.isSignIn">
@@ -99,7 +99,7 @@
       </ion-note>
     </ion-item>
     <ion-button
-      typy="submit"
+      type="submit"
       expand="block"
       [disabled]="authForm.invalid"
     >
