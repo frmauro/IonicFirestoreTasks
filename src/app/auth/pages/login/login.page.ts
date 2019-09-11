@@ -59,8 +59,6 @@ export class LoginPage implements OnInit {
   }
 
   async onSubmit(provider: AuthProvider): Promise<void> {
-    let teste = 'teste';
-
     try {
       const credentials = await this.authService.authenticate({
         isSignIn: this.configs.isSignIn,
