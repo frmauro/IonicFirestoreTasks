@@ -1,10 +1,17 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHef="/tasks"></ion-back-button>
+    </ion-buttons>
     <ion-title>Create Task</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <form
+  [formGroup]="taskForm"
+  (submit)="onSubmit()"
+  >
   <ion-item>
     <ion-icon
       name="paper"
@@ -16,15 +23,17 @@
       placeholder="Title"
       autofocus="true"
       inputmode="text"
+      formControlName="title"
     >
     </ion-input>
   </ion-item>
 <ion-button
   expand="full"
   type="submit"
+  [disabled]="taskForm.invalid"
 >
   Save
 </ion-button>
-
+  </form>
 
 </ion-content>
