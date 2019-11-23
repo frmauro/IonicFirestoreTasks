@@ -9,6 +9,6 @@ import { Task } from '../../models/task.model';
 export class TaskItemComponent {
   @Input() task: Task;
   @Output() done: EventEmitter<Task>;
-  @Output() update: EventEmitter<Task>;
+  @Output() update = new EventEmitter<Task>();
   @Output() delete: EventEmitter<Task>;
 }
