@@ -1,7 +1,7 @@
-import { async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { Task } from '../../models/task.model';
 import { OverlayService } from './../../../core/services/overlay.service';
@@ -21,9 +21,9 @@ export class TaksListPage {
     private taskService: TasksService
   ) {}
 
-  // ngOnInit(): void {
-  //   this.tasks$ = this.taskService.getAll();
-  // }
+  //async ngOnInit(): Promise<void> {
+  //this.tasks$ = this.taskService.getAll();
+  //}
 
   onUpdate(task: Task): void {
     this.navCtrl.navigateForward(`/tasks/edit/${task.id}`);
@@ -55,7 +55,9 @@ export class TaksListPage {
     });
   }
 
-  ionViewDidEnter(): void {
+  async ionViewDidEnter(): Promise<void> {
+    const loading = await this.overlayService.loading();
     this.tasks$ = this.taskService.getAll();
+    this.tasks$.pipe(take(1)).subscribe(tasks => loading.dismiss());
   }
 }
