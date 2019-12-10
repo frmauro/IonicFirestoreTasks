@@ -1,13 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-button slot="start">
-    <ion-menu-toggle>
-      <ion-button>
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
-    </ion-menu-toggle>
-    </ion-button>
+    <ion-menu-toggle
+     slot="start"
+     menu="main-menu"
+    ></ion-menu-toggle>
     <ion-title>Taks List</ion-title>
+    <app-logout-button slot="end"></app-logout-button>
   </ion-toolbar>
 </ion-header>
 
